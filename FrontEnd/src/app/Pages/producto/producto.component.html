@@ -1,0 +1,50 @@
+<div class="mat-elevation-z2" style="width: 30%; padding: 30px; margin: 50px auto;">
+    <form [formGroup]="formProducto">
+        <div class="flex">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+                <div *ngIf="formProducto.get('nombre')?.invalid && formProducto.get('nombre')?.touched">
+                    <small *ngIf="formProducto.get('nombre')?.errors?.['required']">El nombre es requerido.</small>
+                    <small *ngIf="formProducto.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</small>
+                  </div>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion</mat-label>
+                <input matInput formControlName="descripcion">
+                <div *ngIf="formProducto.get('descripcion')?.invalid && formProducto.get('descripcion')?.touched">
+                    <small *ngIf="formProducto.get('descripcion')?.errors?.['required']">La descripcion es requerida.</small>
+                    <small *ngIf="formProducto.get('descripcion')?.errors?.['maxlength']">La descripción no puede exceder los 150 caracteres.</small>
+                  </div>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="example-full-width">
+                <mat-label>Precio</mat-label>
+                <input matInput type="number" formControlName="precio">
+                <div *ngIf="formProducto.get('precio')?.invalid && formProducto.get('precio')?.touched">
+                    <small *ngIf="formProducto.get('precio')?.errors?.['required']">El precio es requerido.</small>
+                    <small *ngIf="formProducto.get('precio')?.errors?.['min']">El precio debe ser un número positivo.</small>
+                  </div>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="example-full-width">
+                <mat-label>Stock</mat-label>
+                <input matInput type="number" formControlName="cantidadStock">
+                <div *ngIf="formProducto.get('cantidadStock')?.invalid && formProducto.get('cantidadStock')?.touched">
+                    <small *ngIf="formProducto.get('cantidadStock')?.errors?.['required']">La cantidad es requerida.</small>
+                    <small *ngIf="formProducto.get('cantidadStock')?.errors?.['min']">La cantidad debe ser al menos 1.</small>
+                    <small *ngIf="formProducto.get('cantidadStock')?.errors?.['max']">La cantidad no puede exceder 1000.</small>
+                  </div>
+            </mat-form-field>
+        </div>
+
+        <div class="flex">
+            <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+            <button mat-flat-button color="warn" (click)="volver()" style="margin-left: 10px;">Volver</button>
+        </div>
+    </form>
+</div>
